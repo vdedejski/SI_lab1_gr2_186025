@@ -61,3 +61,30 @@ class Student {
 	}
 
 }
+
+class Faculty{
+	private String facultyName;
+	private List<Student> studentList;
+
+	public Faculty(String facultyName) {
+		this.facultyName = facultyName;
+		this.studentList = new ArrayList<>();
+	}
+
+	public void addStudnet(Student student){
+		studentList.add(student);
+	}
+
+	public void removeStudent(Student student){
+		studentList.remove(student);
+	}
+
+	public Double getAllAverage(){
+		DoubleSummaryStatistics ds = new DoubleSummaryStatistics();
+		for (Student s : studentList){
+			ds.accept(s.getAverage());
+		}
+		return ds.getAverage();
+	}
+	
+}
